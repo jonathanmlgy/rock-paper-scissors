@@ -1,4 +1,3 @@
-let userChoice;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -18,15 +17,25 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock')) {
         playerScore++;
         return "You win this round!";
+    } else if (playerSelection == false) {
+        return "Invalid choice";
     } else {
         computerScore++;
         return "You lose this round"
     }
 }
 
+function getInput() {
+    let userChoice = prompt("Choose: Rock, Paper, Or Scissors").toLowerCase();
+    if (userChoice != "rock" && userChoice != "paper" && userChoice != "scissors") {
+        return false;
+    } else {
+        return userChoice;
+    }  
+}
+
 for (let i = 1; i <= 5; i++){
-    userChoice = prompt("Choose: Rock, Paper, or Scissors;");
-    const playerSelection = userChoice;
+    const playerSelection = getInput();
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
     console.log("Player points: ", playerScore, "Computer points: ", computerScore);
